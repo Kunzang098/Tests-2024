@@ -1,3 +1,4 @@
+#Calculating BMI
 # asking for input from the users.
 the_height = float(input("Enter the height in cm: "))
 the_weight = float(input("Enter the weight in kg: "))
