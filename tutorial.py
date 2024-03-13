@@ -1,65 +1,30 @@
-# Initialize empty lists and dictionary
-students_list = []
-students_dict = {}
+#Initialize empty lists and dictionary to store students information
+students_list= []
+students_dict= {}
 
-def add_student():
-    name = input("Enter student's name: ")
-    age = input("Enter student's age: ")
-    grade = input("Enter student's grade: ")
+#Add student information
+name= input("Enter student's name:")
+age = int(input("Enter student's age:"))
+grade = int(input("Enter student's grade:"))
+students_list.append(name)
+students_dict[name] = {"age":age, "grade":grade}
+print("Student's information added successfully")
+print(students_dict.items())
 
-    # Add to list
-    students_list.append(name)
-    # Add to dictionary
-    students_dict[name] = {'age': age, 'grade': grade}
+#Search for students by name
+search_name =input("Enter the name of the student to search or simply enter to escape:")
+if search_name in students_list:
+    info=students_dict[search_name]
+    print(f"Name:{search_name}, Age:{info['age']}, Grade:{info['grade']}")
+else:
+    print("Student not found")
 
-    print("Student added successfully!")
+#Remove student
+remove_name=input("Enter the name of the student to be removed or simply enter to skip:")
+if remove_name in students_list:
+    del students_dict[remove_name]
+    students_list.remove(remove_name)
+    print("Student removed successfully")
+else:
+    print("Student not found!")    
 
-def view_students():
-    print("\nStudent Details:")
-    for name, info in students_dict.items():
-        print(f"Name: {name}, Age: {info['age']}, Grade: {info['grade']}")
-
-def search_student():
-    name = input("Enter student's name to search: ")
-    if name in students_dict:
-        info = students_dict[name]
-        print(f"Name: {name}, Age: {info['age']}, Grade: {info['grade']}")
-    else:
-        print("Student not found.")
-
-def remove_student():
-    name = input("Enter student's name to remove: ")
-    if name in students_list:
-        students_list.remove(name)
-        del students_dict[name]
-        print("Student removed successfully!")
-    else:
-        print("Student not found.")
-
-def main():
-    while True:
-        print("\nStudent Information Management System")
-        print("1. Add a Student")
-        print("2. View all Students")
-        print("3. Search for a Student")
-        print("4. Remove a Student")
-        print("5. Exit")
-
-        choice = input("Enter your choice: ")
-
-        if choice == '1':
-            add_student()
-        elif choice == '2':
-            view_students()
-        elif choice == '3':
-            search_student()
-        elif choice == '4':
-            remove_student()
-        elif choice == '5':
-            print("Exiting...")
-            break
-        else:
-            print("Invalid choice. Please try again.")
-
-if __name__ == "__main__":
-    main()
